@@ -64,12 +64,14 @@ target("mspmo_demo")
         "-std=c11",
         "-Wall",
         "-fdata-sections",
-        "-ffunction-sections"
+        "-ffunction-sections",
+        "-mfloat-abi=soft"
     }, {force = true})
 
     add_asflags({
         "-mcpu=cortex-m0plus",
-        "-mthumb"
+        "-mthumb",
+        "-mfloat-abi=soft"
     }, {force = true})
 
     add_ldflags({
@@ -77,6 +79,8 @@ target("mspmo_demo")
         "-mthumb",
         "-Wl,--gc-sections",
         "--specs=nosys.specs",
+        "-mfloat-abi=soft",
+        "-Wl,--print-memory-usage",
         "-lm"
     }, {linker = true, force = true})
 
